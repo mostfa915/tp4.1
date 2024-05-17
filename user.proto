@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+message User {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message Post {
+    string id = 1;
+    string title = 2;
+    string content = 3;
+    repeated string tags = 4;
+}
+
+message GetUserRequest {
+    string user_id = 1;
+}
+
+message GetUserResponse {
+    string user = 1;
+}
+
+message CreateUserRequest {
+    string name = 1;
+    string email = 2;
+}
+
+message CreateUserResponse {
+    string user_id = 1;
+}
+
+message UpdateUserRequest {
+    string user_id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message UpdateUserResponse {
+    string User = 1;
+}
+
+message DeleteUserRequest {
+    string user_id = 1;
+}
+
+message DeleteUserResponse {
+    string message = 1;
+}
+
+service UserService {
+    rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {}
+    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse) {}
+    rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse) {}
+}
+
